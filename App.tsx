@@ -107,7 +107,7 @@ const App: React.FC = () => {
               language={language}
               onLanguageChange={handleLanguageChange}
             />
-            <main className="flex-1 flex flex-col">
+            <main className="flex-1 flex flex-col p-4 overflow-hidden">
                 <Terminal 
                   history={history} 
                   onCommand={handleCommand} 

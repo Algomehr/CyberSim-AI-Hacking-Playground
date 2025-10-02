@@ -63,8 +63,22 @@ export const Terminal: React.FC<TerminalProps> = ({ history, onCommand, isLoadin
   };
 
   return (
-    <div className="flex-1 flex flex-col p-4 bg-gray-900/50" onClick={() => inputRef.current?.focus()}>
-      <div className="flex-1 overflow-y-auto pe-4 font-mono min-h-0">
+    <div className="flex-1 flex flex-col bg-gray-800/50 rounded-lg border border-gray-700/50 shadow-2xl overflow-auto" onClick={() => inputRef.current?.focus()}>
+      
+      {/* Header */}
+      <div className="flex items-center p-2 bg-gray-900/60 border-b border-gray-700/50 rounded-t-lg">
+        <div className="flex space-x-1.5 rtl:space-x-reverse">
+          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+        </div>
+        <div className="flex-1 text-center text-xs text-gray-400 uppercase tracking-widest font-semibold">
+          CyberSim Terminal
+        </div>
+      </div>
+
+      {/* Central Content (scrollable) */}
+      <div className="flex-1 overflow-y-auto p-4 font-mono min-h-0">
         {history.map((line, index) => (
           <TerminalOutput key={index} line={line} />
         ))}
@@ -76,7 +90,9 @@ export const Terminal: React.FC<TerminalProps> = ({ history, onCommand, isLoadin
         )}
         <div ref={endOfHistoryRef} />
       </div>
-      <form onSubmit={handleSubmit} className="mt-4 flex items-center">
+
+      {/* Footer (input) */}
+      <form onSubmit={handleSubmit} className="flex items-center p-3 bg-gray-900/60 border-t border-gray-700/50 rounded-b-lg">
         <span className="text-emerald-400 me-2 font-mono">$</span>
         <input
           ref={inputRef}
