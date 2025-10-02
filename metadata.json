@@ -1,0 +1,5 @@
+{
+  "name": "CyberSim AI: Hacking Playground",
+  "description": "An intelligent application for hands-on learning of hacking and security. Users can act as a hacker against an AI system, or as a white-hat defender against an AI attacker. Includes a guided roadmap for beginners to learn concepts and practice in simulated scenarios.",
+  "requestFramePermissions": []
+}
