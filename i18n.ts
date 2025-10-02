@@ -20,6 +20,15 @@ export const translations = {
     terminalPlaceholder: "Enter your command here...",
     aiThinking: "AI is thinking...",
     startingScenario: "Starting",
+    levelBeginner: "Beginner",
+    levelIntermediate: "Intermediate",
+    levelAdvanced: "Advanced",
+    capstone: "Capstone Project",
+    section1Title: "1. Core Fundamentals",
+    section2Title: "2. Reconnaissance & Enumeration",
+    section3Title: "3. Web Application Hacking",
+    section4Title: "4. System Exploitation",
+    section5Title: "5. Defensive Security",
   },
   fa: {
     appName: "سایبرسیم",
@@ -40,6 +49,15 @@ export const translations = {
     terminalPlaceholder: "دستور خود را اینجا وارد کنید...",
     aiThinking: "هوش مصنوعی در حال فکر کردن است...",
     startingScenario: "در حال شروع",
+    levelBeginner: "مبتدی",
+    levelIntermediate: "متوسط",
+    levelAdvanced: "پیشرفته",
+    capstone: "پروژه جامع",
+    section1Title: "۱. مبانی اصلی",
+    section2Title: "۲. شناسایی و جمع‌آوری اطلاعات",
+    section3Title: "۳. هک وب اپلیکیشن",
+    section4Title: "۴. بهره‌برداری از سیستم",
+    section5Title: "۵. امنیت دفاعی",
   }
 };
 

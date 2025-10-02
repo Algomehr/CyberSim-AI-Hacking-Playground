@@ -19,10 +19,19 @@ export interface TerminalLine {
     content: ReactNode;
 }
 
+export type ModuleLevel = 'Beginner' | 'Intermediate' | 'Advanced';
+
 export interface LearningModule {
     id: number;
     title: string;
     description: string;
     conceptPrompt: string;
     scenarioPrompt: string;
+    level: ModuleLevel;
+    isCapstone?: boolean;
+}
+
+export interface RoadmapSection {
+    title: string;
+    modules: LearningModule[];
 }

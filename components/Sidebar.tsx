@@ -2,7 +2,7 @@ import React from 'react';
 import type { LearningModule, Language } from '../types';
 import { GameMode } from '../types';
 import { getRoadmap } from '../constants';
-import { BrainIcon, HackerIcon, ShieldIcon } from './Icons';
+import { BrainIcon, HackerIcon, ShieldIcon, StarIcon } from './Icons';
 import { getTranslations } from '../i18n';
 
 interface SidebarProps {
@@ -34,6 +34,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeMode, onModeChange, onSe
       <span className="ms-3 font-semibold">{label}</span>
     </button>
   );
+  
+  const levelColorClasses = {
+    'Beginner': 'bg-green-600/50 text-green-300 border-green-500/50',
+    'Intermediate': 'bg-yellow-600/50 text-yellow-300 border-yellow-500/50',
+    'Advanced': 'bg-red-600/50 text-red-300 border-red-500/50',
+  };
+
+  const levelTranslations = {
+    'Beginner': t.levelBeginner,
+    'Intermediate': t.levelIntermediate,
+    'Advanced': t.levelAdvanced,
+  }
 
   return (
     <div className="w-1/4 max-w-sm bg-gray-900/80 backdrop-blur-sm border-e border-gray-700/50 p-4 flex flex-col h-full overflow-y-auto">
@@ -51,18 +63,37 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeMode, onModeChange, onSe
       <div className="flex-grow">
         {activeMode === GameMode.LEARN && (
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">{t.roadmap}</h3>
-            {roadmap.map((module) => (
-              <div key={module.id} className="p-3 mb-2 bg-gray-800 rounded-lg border border-transparent hover:border-emerald-500 transition-all">
-                <h4 className="font-bold text-emerald-400">{module.title}</h4>
-                <p className="text-sm text-gray-400 mt-1 mb-3">{module.description}</p>
-                <div className="flex space-x-2 rtl:space-x-reverse">
-                  <button onClick={() => onSelectModule(module)} className="text-xs bg-blue-600 hover:bg-blue-500 text-white font-bold py-1 px-3 rounded transition-colors">
-                    {t.learnConcept}
-                  </button>
-                  <button onClick={() => onStartScenario(module.scenarioPrompt, GameMode.LEARN)} className="text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-1 px-3 rounded transition-colors">
-                    {t.startScenario}
-                  </button>
+            <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{t.roadmap}</h2>
+            {roadmap.map((section) => (
+              <div key={section.title} className="mb-6 last:mb-0">
+                <h3 className="text-lg font-bold text-gray-300 mb-3 border-b border-gray-700 pb-1">{section.title}</h3>
+                <div className="space-y-3">
+                  {section.modules.map((module) => (
+                    <div key={module.id} className="p-3 bg-gray-800 rounded-lg border border-gray-700/70 hover:border-emerald-500 transition-all duration-200">
+                      <div className="flex justify-between items-start mb-1">
+                        <h4 className="font-bold text-emerald-400 text-base flex-1">{module.title}</h4>
+                        <div className="flex items-center shrink-0 space-x-2 rtl:space-x-reverse text-xs font-semibold ms-2">
+                           <span className={`px-2 py-0.5 rounded-full border ${levelColorClasses[module.level]}`}>
+                             {levelTranslations[module.level]}
+                           </span>
+                           {module.isCapstone && (
+                            <span className="flex items-center px-2 py-0.5 rounded-full bg-purple-600/50 text-purple-300 border border-purple-500/50" title={t.capstone}>
+                              <StarIcon className="w-3.5 h-3.5" />
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-400 mt-1 mb-3">{module.description}</p>
+                      <div className="flex space-x-2 rtl:space-x-reverse">
+                        <button onClick={() => onSelectModule(module)} className="text-xs bg-blue-600 hover:bg-blue-500 text-white font-bold py-1 px-3 rounded transition-colors">
+                          {t.learnConcept}
+                        </button>
+                        <button onClick={() => onStartScenario(module.scenarioPrompt, GameMode.LEARN)} className="text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-1 px-3 rounded transition-colors">
+                          {t.startScenario}
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
