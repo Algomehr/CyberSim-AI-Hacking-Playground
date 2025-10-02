@@ -64,7 +64,7 @@ export const Terminal: React.FC<TerminalProps> = ({ history, onCommand, isLoadin
 
   return (
     <div className="flex-1 flex flex-col p-4 bg-gray-900/50" onClick={() => inputRef.current?.focus()}>
-      <div className="flex-1 overflow-y-auto pe-4 font-mono">
+      <div className="flex-1 overflow-y-auto pe-4 font-mono min-h-0">
         {history.map((line, index) => (
           <TerminalOutput key={index} line={line} />
         ))}
