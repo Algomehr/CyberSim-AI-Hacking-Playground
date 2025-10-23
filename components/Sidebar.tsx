@@ -130,6 +130,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeMode, onModeChange, onSe
                 FA
             </button>
         </div>
+        <div className="text-center text-xs text-gray-500 mt-4">
+            <span>{t.developedBy} </span>
+            <a 
+                href="https://mehrdad.netlify.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+                {t.developerName}
+            </a>
+        </div>
       </div>
     </div>
   );

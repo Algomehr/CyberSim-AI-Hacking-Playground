@@ -29,6 +29,8 @@ export const translations = {
     section3Title: "3. Web Application Hacking",
     section4Title: "4. System Exploitation",
     section5Title: "5. Defensive Security",
+    developedBy: "Developed by",
+    developerName: "Mehrdad Rajabi",
   },
   fa: {
     appName: "سایبرسیم",
@@ -58,6 +60,8 @@ export const translations = {
     section3Title: "۳. هک وب اپلیکیشن",
     section4Title: "۴. بهره‌برداری از سیستم",
     section5Title: "۵. امنیت دفاعی",
+    developedBy: "توسعه یافته توسط",
+    developerName: "مهرداد رجبی",
   }
 };
 
